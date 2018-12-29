@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+
+
+def VERSION_NAME = "1.2"
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 4
+        versionName "${VERSION_NAME}"
+
+    }
+
+    buildTypes {
+        debug {
+
+        }
+        beta {
+
+        }
+        release {
+            postprocessing {
+                removeUnusedCode false
+                removeUnusedResources false
+                obfuscate false
+                optimizeCode false
+                proguardFile 'proguard-rules.pro'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+}
+
