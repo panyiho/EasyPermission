@@ -18,13 +18,6 @@ EasyPermission是一个简单易用，且无多余的第三方依赖的Android6.
 - 如果动态申请的权限没有在清单文件中注册会抛出异常
 - 支持Android8.0的安装应用和悬浮窗权限
 
-#### gradle集成
-
-```
-dependencies {
-    implementation 'cn.ecpark:EasyPermission:1.1'
-}
-```
 ## 使用方法
 ```
 EasyPermission.with(this)  
