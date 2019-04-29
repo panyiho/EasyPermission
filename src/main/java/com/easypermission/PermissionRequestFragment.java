@@ -123,7 +123,7 @@ public final class PermissionRequestFragment extends Fragment implements Runnabl
         for (String permission : needRequestPermissionList) {
             Log.i(EasyPermission.TAG, "需要申请的权限：" + permission);
         }
-        if (needRequestPermissionList.isEmpty()) {
+        if (needRequestPermissionList.isEmpty() && mPermissionRequestListener != null) {
             Log.i(EasyPermission.TAG, "没有需要申请的权限，直接回调");
             mPermissionRequestListener.onGrant(mPermissionGrantMap);
             return;
@@ -169,7 +169,9 @@ public final class PermissionRequestFragment extends Fragment implements Runnabl
         for (Map.Entry<String, GrantResult> entry : entrySet) {
             Log.i(EasyPermission.TAG, "权限：" + entry.getKey() + "  状态：" + entry.getValue());
         }
-        mPermissionRequestListener.onGrant(mPermissionGrantMap);
+        if (mPermissionRequestListener != null) {
+            mPermissionRequestListener.onGrant(mPermissionGrantMap);
+        }
         getFragmentManager().beginTransaction().remove(this).commit();
     }
 
